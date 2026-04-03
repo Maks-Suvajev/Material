@@ -1,10 +1,14 @@
 add_library(MaterialLib 
-    source/Material.cpp
     source/MaterialManager.cpp
 )
 
+
 target_link_libraries(MaterialLib
-    PRIVATE TypeLib
+    PUBLIC         
+        ResourceManagerBaseLib
+    PRIVATE 
+        TypeLib
+        AssetsLib
 )
 
 target_include_directories(MaterialLib 

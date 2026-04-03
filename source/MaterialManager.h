@@ -1,7 +1,8 @@
 #ifndef MATERIAL_MANAGER_H
 #define MATERIAL_MANAGER_H
 
-#include "Material.h"
+#include "MaterialTypes.h"
+#include "ResourceManager.h"
 #include <string>
 #include <memory>
 #include <unordered_map>
@@ -11,15 +12,11 @@
 namespace gfx
 {
 
-class MaterialManager
+class MaterialManager : public ResourceManager<Material>
 {
     public:
-        MaterialManager() = default;
-        void addMaterial(std::string name, MaterialProperties&& materialInitProperties);
-        Material* getMaterial(std::string materialName);
-
-    private:
-        std::unordered_map<std::string, std::unique_ptr<Material>> materials;
+        MaterialManager();
+        void registerElement(const std::string& key, Material&& newElement) override;
 };
 
 }
