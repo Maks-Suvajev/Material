@@ -5,6 +5,7 @@ add_library(MaterialLib
 
 target_link_libraries(MaterialLib
     PRIVATE TypeLib
+    PUBLIC ResourceManagersLib
 )
 
 target_include_directories(MaterialLib 

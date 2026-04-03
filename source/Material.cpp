@@ -4,7 +4,7 @@ namespace gfx
 {
 
 Material::Material(MaterialProperties&& materialInitProperties)
-    : materialProperties(std::move(materialInitProperties))
+    : m_materialProperties(std::move(materialInitProperties))
 {
 }
 

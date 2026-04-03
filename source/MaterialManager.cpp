@@ -3,11 +3,18 @@
 namespace gfx
 {
 
-void MaterialManager::addMaterial(std::string name, MaterialProperties&& materialInitProperties)
+
+MaterialManager::MaterialManager()
+    : ResourceManager<Material>(nullptr, std::vector<std::string>()) // Doesn't need file access
 {
-    if (!materials.contains(name))
+    
+}
+
+void MaterialManager::registerElement(const std::string& key, Material&& newElement)
+{
+    if (!m_elements.contains(key))
     {
-        materials[name] = std::make_unique<Material>(std::move(materialInitProperties));
+        m_elements[key] = std::make_unique<Material>(std::move(newElement));
     }
     else
     {
@@ -15,20 +22,6 @@ void MaterialManager::addMaterial(std::string name, MaterialProperties&& materia
             std::cout << "ERROR::Material name already exists - try different key - doing nothing." << std::endl;
         #endif
     }
-}
-
-Material* MaterialManager::getMaterial(std::string materialName)
-{
-    if (materials.contains(materialName))
-    {
-        return materials[materialName].get();
-    }
-
-    #ifdef ENABLE_DEBUG_MESSAGES
-        std::cout << "ERROR::Requested material name does not exist: " << materialName << std::endl;
-    #endif
-
-    return nullptr;
 }
 
 }

@@ -10,17 +10,16 @@ namespace gfx
 
 class Material
 {
-
     public:
         Material() = default;
         Material(MaterialProperties&& materialInitProperties);
 
-        MaterialProperties getMaterialProperties(){
-            return materialProperties;
+        MaterialProperties* getMaterialProperties(){
+            return &m_materialProperties;
         };
 
     private:
-        MaterialProperties materialProperties;
+        MaterialProperties m_materialProperties;
 
 };
 
