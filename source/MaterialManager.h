@@ -2,6 +2,7 @@
 #define MATERIAL_MANAGER_H
 
 #include "MaterialTypes.h"
+
 #include "ResourceManager.h"
 #include <string>
 #include <memory>
